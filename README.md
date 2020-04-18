@@ -3,6 +3,8 @@ App to find massive chunks together in Minecraft
 
 Edit file for put your coords, then they will find nearastet you the massive chunks:
 
+seedInput = put you seed
+
 You coords there
 int x = 0, y = 0; // Corrdenadas iniciales
 
