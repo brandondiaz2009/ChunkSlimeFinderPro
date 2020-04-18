@@ -18,7 +18,7 @@ public class ChunkSlimes {
 
         int totalStepsNear = 8; // Default 8 = 3x3
         int totalSlimesNear = 8; // Cantidad de chhunks cerca en los pasos
-
+        var centerChunkSlime = true;
         int step_count = 1;
         int step_limit = 2;
         int adder = 1;
@@ -36,16 +36,24 @@ public class ChunkSlimes {
                 step_count = 0;
             }
 
-            var checkChunk = slime(seed,x,y);
-
             if(totalStepsNear == 1){
-                    System.out.println("Found " + totalSlimesNear + " chunks near on: X:" + Integer.toString(x * 16) + " Z:" + Integer.toString(y * 16));
-                    return;
+                    var checkChunk = slime(seed,x,y);
+                    if(checkChunk){
+                        System.out.println("Found " + totalSlimesNear + " chunks near on: X:" + Integer.toString(x * 16) + " Z:" + Integer.toString(y * 16));
+                        return;
+                    }
             }else{
-                var slimesNear = checkSlimesNear(seed,x-1,y,totalStepsNear,totalSlimesNear);
-                if(slimesNear){
-                    System.out.println("Found " + totalSlimesNear + " chunks near on: X:" + Integer.toString(x * 16) + " Z:" + Integer.toString(y * 16));
-                    return;
+                var valid=true;
+                if(centerChunkSlime){
+                        valid=slime(seed,x,y);
+                }
+
+                if(valid){
+                        var slimesNear = checkSlimesNear(seed,x,y,totalStepsNear,totalSlimesNear);
+                        if(slimesNear){
+                            System.out.println("Found " + totalSlimesNear + " chunks near on: X:" + Integer.toString(x * 16) + " Z:" + Integer.toString(y * 16));
+                            return;
+                        }
                 }
            }
 
