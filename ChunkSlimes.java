@@ -56,7 +56,7 @@ public class ChunkSlimes {
 
     }
 
- public static boolean slime(long seed, int xPosition, int zPosition){
+    public static boolean slime(long seed, int xPosition, int zPosition){
         Random rnd = new Random(
              seed +
             (int) (xPosition * xPosition * 0x4c1906) +
@@ -67,10 +67,7 @@ public class ChunkSlimes {
         return rnd.nextInt(10) == 0;
     }
 
-
-
-
-  public static boolean checkSlimesNear(long seed, int xPosition, int zPosition, int totalStepsNear, int totalSlimeNear){
+    public static boolean checkSlimesNear(long seed, int xPosition, int zPosition, int totalStepsNear, int totalSlimeNear){
         // 8 steps = 3 x 3
         // 24 steps = 5 x 5
         // Formula (X * X) -1 = total Steps
@@ -111,7 +108,8 @@ public class ChunkSlimes {
 
             var checkChunk = slime(seed,x,y);
             //System.out.println("X: " + x + " Y: " + y);
-    if(checkChunk){
+
+            if(checkChunk){
                 totalSlimesDetected++;
                 coordsFound[stepsDone][0] = x;
                 coordsFound[stepsDone][1] = y;
@@ -137,7 +135,3 @@ public class ChunkSlimes {
 
     }
 }
-
-
-
-
